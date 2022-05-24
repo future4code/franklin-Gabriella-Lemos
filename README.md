@@ -1,3 +1,9 @@
+###Exercício prático de instrodução ao React:
+O exercício consiste em recriar em React a página inicial do LabTube.
+link da página: http://oceanic-mother.surge.sh/
+
+
+
 Boas-vindas!
 
 Esse repositório vai acompanhar vocês até o final do curso, para mantermos a organização, sugerimos que vocês sigam a seguinte estrutura:
