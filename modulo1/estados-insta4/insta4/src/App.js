@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Post from "./components/Post/Post";
 
@@ -9,6 +9,10 @@ const MainContainer = styled.div`
   align-items: center;
 `;
 function App() {
+  const [state, setState] = useState({
+    pessoas: [(nome: "robertinha")],
+  });
+
   return (
     <MainContainer>
       <Post
