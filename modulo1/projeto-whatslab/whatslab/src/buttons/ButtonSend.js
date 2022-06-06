@@ -1,9 +1,9 @@
 import React from "react";
 
-const ButtonSend = () => {
+const ButtonSend = (props) => {
   return (
     <div>
-      <button>enviar</button>
+      <button onClick={props.sendMessage}>enviar</button>
     </div>
   );
 };
