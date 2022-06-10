@@ -19,19 +19,22 @@ const InputsContainer = styled.div`
 `;
 
 function App() {
-  const [tarefas, setTarefa] = useState([{}]);
+  const [tarefas, setTarefa] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [filtro, setFiltro] = useState("");
 
-  useEffect(() => {
-    localStorage.setItem("item", JSON.stringify(tarefas));
-  }, [tarefas]);
+  const saveData = () => {
+    if (inputValue) localStorage.setItem("item", inputValue);
+  };
 
   useEffect(() => {
-    const storedMessage = JSON.parse(localStorage.getItem("item"));
-
-    setTarefa(storedMessage);
+    const storedTarefa = localStorage.getItem("item");
+    setInputValue(storedTarefa);
   }, []);
+
+  useEffect(() => {
+    saveData();
+  }, [inputValue]);
 
   const onChangeInput = (event) => {
     setInputValue(event.target.value);
