@@ -19,28 +19,19 @@ const InputsContainer = styled.div`
 `;
 
 function App() {
-  const [tarefas, setTarefa] = useState([
-    {
-      id: Date.now(),
-      texto: "Texto da primeira tarefa",
-      completa: false,
-    },
-    {
-      id: Math.random(),
-      texto: "Texto da segunda tarefa",
-      completa: true,
-    },
-  ]);
+  const [tarefas, setTarefa] = useState([{}]);
   const [inputValue, setInputValue] = useState("");
-  const [filtro, setFiltro] = useState("pendentes");
+  const [filtro, setFiltro] = useState("");
 
   useEffect(() => {
-    () => {}, [];
-  });
+    localStorage.setItem("item", JSON.stringify(tarefas));
+  }, [tarefas]);
 
   useEffect(() => {
-    () => {}, [];
-  });
+    const storedMessage = JSON.parse(localStorage.getItem("item"));
+
+    setTarefa(storedMessage);
+  }, []);
 
   const onChangeInput = (event) => {
     setInputValue(event.target.value);
@@ -48,7 +39,7 @@ function App() {
 
   const criaTarefa = () => {
     const novaTarefa = {
-      id: Date.now(),
+      id: Math.random(),
       texto: inputValue,
       completa: false,
     };
@@ -57,12 +48,19 @@ function App() {
     setTarefa(novaListaTarefas);
   };
 
-  const selectTarefa = (tarefa) => {
-    const buscaTarefa = tarefas.map((tarefa) => {
-      if (tarefas.id === tarefa.id) {
-        setTarefa(!tarefa.completa);
+  const selectTarefa = (id) => {
+    const buscaTarefa = tarefas.map((item) => {
+      if (id === item.id) {
+        const novaBuscaTarefa = {
+          ...item,
+          completa: !item.completa,
+        };
+        return novaBuscaTarefa;
+      } else {
+        return item;
       }
     });
+    setTarefa(buscaTarefa);
   };
 
   const onChangeFilter = (event) => {
@@ -73,8 +71,10 @@ function App() {
     switch (filtro) {
       case "pendentes":
         return !tarefa.completa;
+
       case "completas":
         return tarefa.completa;
+
       default:
         return true;
     }
