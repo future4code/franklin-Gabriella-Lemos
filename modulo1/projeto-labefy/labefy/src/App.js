@@ -51,8 +51,27 @@ function App() {
       });
   };
 
+  const deletaplaylist = () => {
+    axios.delete(
+      "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
+      {
+        headers: {
+          Authorization: "gabriella-lemos-franklin",
+        },
+      },
+      {
+        params: {
+          playlistId: playlists.id,
+        },
+      }
+    );
+  };
   const novaPlaylist = playlists.map((lista) => {
-    return <p key={lista.id}>{lista.name}</p>;
+    return (
+      <p key={lista.id}>
+        {lista.name} <button onClick={deletaplaylist}>Delete playlist</button>
+      </p>
+    );
   });
 
   useEffect(geraPlaylist, [playlists]);
@@ -62,6 +81,7 @@ function App() {
       <input onChange={handlePlaylist} value={inputNamePlaylist}></input>
       <button onClick={createPlaylist}>criar playlist</button>
       {novaPlaylist}
+      <button>Deletar playlist</button>
     </div>
   );
 }
