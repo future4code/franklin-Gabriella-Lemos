@@ -5,9 +5,14 @@ import "./App.css";
 function App() {
   const [inputNamePlaylist, setInputNamePlaylist] = useState("");
   const [playlists, setPlaylists] = useState([]);
+  const [deletePlaylist, setDeletePlaylist] = useState("");
 
   const handlePlaylist = (event) => {
     setInputNamePlaylist(event.target.value);
+  };
+
+  const handleDeletePlaylist = (event) => {
+    setDeletePlaylist(event.target.value);
   };
 
   const createPlaylist = () => {
@@ -43,35 +48,39 @@ function App() {
           },
         }
       )
-      .then((respponse) => {
-        setPlaylists(respponse.data.result.list);
+      .then((response) => {
+        setPlaylists(response.data.result.list);
       })
       .catch((error) => {
         console.log(error.response.data);
       });
   };
 
-  const deletaplaylist = () => {
-    axios.delete(
-      "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId",
-      {
-        headers: {
-          Authorization: "gabriella-lemos-franklin",
-        },
-      },
-      {
-        params: {
-          playlistId: playlists.id,
-        },
-      }
-    );
+  const delPlaylist = (id) => {
+    const select = playlists.filter((list) => deletePlaylist === list.name);
+    console.log(select[0].id);
+    id = select[0].id;
+
+    axios
+      .delete(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`,
+        {
+          headers: {
+            Authorization: "gabriella-lemos-franklin",
+          },
+        }
+      )
+      .then((response) => {
+        setDeletePlaylist("");
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
   };
+
   const novaPlaylist = playlists.map((lista) => {
-    return (
-      <p key={lista.id}>
-        {lista.name} <button onClick={deletaplaylist}>Delete playlist</button>
-      </p>
-    );
+    return <p key={lista.id}>{lista.name} </p>;
   });
 
   useEffect(geraPlaylist, [playlists]);
@@ -81,7 +90,13 @@ function App() {
       <input onChange={handlePlaylist} value={inputNamePlaylist}></input>
       <button onClick={createPlaylist}>criar playlist</button>
       {novaPlaylist}
-      <button>Deletar playlist</button>
+      <h3> Deletar playlist</h3>
+      <input
+        onChange={handleDeletePlaylist}
+        value={deletePlaylist}
+        placeholder="Digite o nome da playlist"
+      ></input>
+      <button onClick={() => delPlaylist(novaPlaylist.id)}>Deletar</button>
     </div>
   );
 }
