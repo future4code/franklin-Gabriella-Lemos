@@ -1,16 +1,33 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { goToForm } from "../routes/coordinator";
 
 export const ListTripsPage = () => {
-  const navigate = useNavigate();
+  const [listaViagem, setListaViagem] = useState("");
 
-  const goToForm = () => {
-    navigate("/trips/application");
+  const carregarLista = () => {
+    axios
+      .get(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/gabriella-lemos-franklin/trips`
+      )
+      .then((response) => {
+        setListaViagem(response.data.trips);
+        console.log(response.data.trips);
+      })
+      .catch((error) => console.log(error));
   };
+
+  const novaLista = listaViagem;
+
+  const navigate = useNavigate();
+  carregarLista();
+
   return (
     <>
       <p> Página List Trips Page</p>
-      <button onClick={goToForm}>cadastro em viagem</button>
+      {novaLista.name}
+      <button onClick={() => goToForm(navigate)}>cadastro em viagem</button>
     </>
   );
 };
