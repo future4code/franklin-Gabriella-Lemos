@@ -32,7 +32,7 @@ export const LoginPage = () => {
         }
       )
       .then((reponse) => {
-        window.localStorage.setItem("token", reponse.data.token);
+        localStorage.setItem("token", reponse.data.token);
         goToAdminPage(navigate);
         // console.log(reponse.data.token);
       })

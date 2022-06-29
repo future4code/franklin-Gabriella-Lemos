@@ -1,10 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { goToForm } from "../routes/coordinator";
 
 export const ListTripsPage = () => {
-  const [listaViagem, setListaViagem] = useState("");
+  const [listaViagem, setListaViagem] = useState([]);
 
   const carregarLista = () => {
     axios
@@ -17,16 +17,22 @@ export const ListTripsPage = () => {
       })
       .catch((error) => console.log(error));
   };
+  console.log(listaViagem);
 
-  const novaLista = listaViagem;
+  const novaLista = listaViagem.map((lista) => {
+    return <p>{lista.name}</p>;
+  });
 
   const navigate = useNavigate();
-  carregarLista();
+
+  useEffect(() => {
+    carregarLista();
+  }, []);
 
   return (
     <>
       <p> Página List Trips Page</p>
-      {novaLista.name}
+      {novaLista}
       <button onClick={() => goToForm(navigate)}>cadastro em viagem</button>
     </>
   );
