@@ -23,6 +23,7 @@ export const AdminHomePage = () => {
   const novaViagens = listagensViagens.map((listagem) => {
     return <p>{listagem.name}</p>;
   });
+
   const navigate = useNavigate();
 
   useEffect(() => {

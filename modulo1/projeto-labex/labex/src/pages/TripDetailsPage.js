@@ -1,9 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { goToLogin } from "../routes/coordinator";
 
 export const TripDetailsPage = () => {
+  const [listDetails, setListDetais] = useState("");
+
   const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -21,11 +23,18 @@ export const TripDetailsPage = () => {
         }
       )
       .then((response) => {
-        console.log(response.data);
+        setListDetais(response.data.trip);
+        console.log(response.data.trip);
       })
       .catch((error) => {
         console.log(error.code);
       });
   });
-  return <p> Página Trip Details Page</p>;
+  return (
+    <>
+      <p> Página Trip Details Page</p>
+      <p>{listDetails.id}</p>
+      <p>{listDetails.candidates}</p>
+    </>
+  );
 };

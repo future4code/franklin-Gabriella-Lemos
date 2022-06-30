@@ -33,7 +33,8 @@ export const ListTripsPage = () => {
     <>
       <p> Página List Trips Page</p>
       {novaLista}
-      <button onClick={() => goToForm(navigate)}>cadastro em viagem</button>
+      <button onClick={() => goToForm(navigate)}>inscreva-se</button>
+      <button onClick={() => navigate("/")}>voltar</button>
     </>
   );
 };
