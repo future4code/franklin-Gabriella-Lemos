@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { goToTripDetails } from "../routes/coordinator";
 import { goToCreateTrips } from "../routes/coordinator";
 import { backToHomePage } from "../routes/coordinator";
 
 export const AdminHomePage = () => {
+  const token = localStorage.getItem("token");
+  const pathParams = useParams();
+
   const [listagensViagens, setListagensViagens] = useState([]);
 
   const viagem = () => {
@@ -20,10 +23,42 @@ export const AdminHomePage = () => {
       })
       .catch((error) => console.log(error));
   };
-  const novaViagens = listagensViagens.map((listagem) => {
-    return <p>{listagem.name}</p>;
-  });
 
+  const delTrip = (id) => {
+    axios
+      .del(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/gabriella-lemos-franklin/trips/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            auth: token,
+          },
+        }
+      )
+      .then((response) => {
+        setListagensViagens(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const novaViagens = listagensViagens.map((listagem) => {
+    return (
+      <>
+        <ul>
+          <li key={listagem.id}>
+            <button onClick={() => goToTripDetails(navigate, listagem.id)}>
+              {listagem.name}
+            </button>
+            <button onClick={delTrip}>delete</button>
+          </li>
+        </ul>
+      </>
+    );
+  });
+  console.log(pathParams);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,9 +69,7 @@ export const AdminHomePage = () => {
     <>
       <p> Página adminitrador home page</p>
       <button onClick={() => backToHomePage(navigate)}>voltar</button>
-      <button onClick={() => goToTripDetails(navigate)}>
-        detalhe da viagem
-      </button>
+
       <button onClick={() => goToCreateTrips(navigate)}>Criar viagem</button>
       <p>{novaViagens}</p>
     </>

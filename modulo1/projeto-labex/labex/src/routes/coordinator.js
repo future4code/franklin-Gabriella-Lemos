@@ -1,3 +1,7 @@
+// import { useParams } from "react-router-dom";
+
+// const pathParams = useParams();
+
 export const goToListTrips = (navigate) => {
   navigate("/trips/list");
 };
@@ -6,8 +10,8 @@ export const goToLogin = (navigate) => {
   navigate("/login");
 };
 
-export const goToTripDetails = (navigate) => {
-  navigate("/admin/trips/:id");
+export const goToTripDetails = (navigate, id) => {
+  navigate(`/admin/trips/${id}`);
 };
 
 export const goToCreateTrips = (navigate) => {
