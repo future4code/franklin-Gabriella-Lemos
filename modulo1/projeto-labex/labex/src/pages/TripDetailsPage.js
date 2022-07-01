@@ -35,34 +35,9 @@ export const TripDetailsPage = () => {
       });
   }, [id, navigate]);
 
-  // const listaCandidatos = listDetails.candidates.map((candidatos) => {
-  //   return (
-  //     <div>
-  //       <p>{candidatos.name}</p>
-  //       <p>{candidatos.profession}</p>
-  //       <p>{candidatos.age}</p>
-  //       <p>{candidatos.country}</p>
-  //       <p>{candidatos.applicationText}</p>
-  //     </div>
-  //   );
-  // });
-
-  // console.log(listaCandidatos);
-
-  // const listaAprovados = listDetails.candidates.map((aprovados) => {
-  //   return (
-  //     <div>
-  //       <p>{aprovados.nome}</p>
-  //       <p>{aprovados.profession}</p>
-  //       <p>{aprovados.age}</p>
-  //       <p>{aprovados.country}</p>
-  //       <p>{.applicationText}</p>
-  //     </div>
-  //   );
-  // });
-
   return (
     <>
+      <h3>Detalhes da viagem</h3>
       <p> Página Trip Details Page</p>
       <p>{listDetails.id}</p>
       <p>{listDetails.name}</p>
@@ -73,7 +48,29 @@ export const TripDetailsPage = () => {
 
       <h3>Lista de candidatos</h3>
 
-      {/* <p>{listaCandidatos.name}</p> */}
+      {listDetails.candidates &&
+        listDetails.candidates.map((candidatos) => {
+          return (
+            <div>
+              <p>{candidatos.name}</p>
+              <p>{candidatos.profession}</p>
+              <p>{candidatos.age}</p>
+              <p>{candidatos.country}</p>
+              <p>{candidatos.applicationText}</p>
+            </div>
+          );
+        })}
+
+      <h3>Lista de Aprovados</h3>
+
+      {listDetails.approved &&
+        listDetails.candidates.map((aprovados) => {
+          return (
+            <div>
+              <p>{aprovados.nome}</p>
+            </div>
+          );
+        })}
     </>
   );
 };
