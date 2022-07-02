@@ -1,6 +1,6 @@
 import React from "react";
 
-const CadastroPage = () => {
+const SignUpPage = () => {
   return (
     <>
       <h2>Página de Cadastro</h2>
@@ -8,4 +8,4 @@ const CadastroPage = () => {
   );
 };
 
-export default CadastroPage;
+export default SignUpPage;

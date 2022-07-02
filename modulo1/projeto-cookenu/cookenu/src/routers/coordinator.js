@@ -1,14 +1,18 @@
-export const goToLists = (navigate) => {
-  navigate("/lists");
+export const goToRecipeListPage = (navigate) => {
+  navigate("/");
 };
-export const goToCadastro = (navigate) => {
+export const goToSignUpPage = (navigate) => {
   navigate("/cadastro");
 };
-export const goToDetails = (navigate) => {
-  navigate("/details");
+export const goToRecipeDetailPage = (navigate, id) => {
+  navigate(`/detalhe/${id}`);
 };
-export const goToCreate = (navigate) => {
-  navigate("/create");
+export const goToAddRecipesPage = (navigate) => {
+  navigate("/adicionar-receita");
+};
+
+export const goToLoginPage = (navigate) => {
+  navigate("/login");
 };
 
 export const backToLists = (navigate) => {

@@ -1,11 +1,14 @@
+import React from "react";
+import { ThemeProvider } from "@mui/material/styles";
 import Router from "./routers/Router";
-import "./App.css";
-function App() {
+import theme from "./constants/theme";
+
+const App = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Router />
-    </div>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
