@@ -7,7 +7,7 @@ import LoginForm from "./LoginForm";
 import { goToSignUpPage } from "../../routers/coordinator";
 import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
-const LoginPage = () => {
+const LoginPage = ({ rightButtonText, setRightButtonText }) => {
   const navigate = useNavigate();
   useUnprotectedPage();
 
@@ -15,7 +15,10 @@ const LoginPage = () => {
     <>
       <ScreenContainer>
         <LogoImage src={logo} />
-        <LoginForm />
+        <LoginForm
+          rightButtonText={rightButtonText}
+          setRightButtonText={setRightButtonText}
+        />
 
         <SignUpButtonContainer>
           <Button

@@ -6,13 +6,13 @@ import useForm from "../../hooks/useForm";
 import { signUp } from "../../services/user";
 import { useNavigate } from "react-router-dom";
 
-const SignUpForm = () => {
+const SignUpForm = ({ setRightButtonText }) => {
   const navigate = useNavigate();
 
   const onSubmitForm = (event) => {
     console.log(form);
     event.preventDefault();
-    signUp(form, navigate);
+    signUp(form, navigate, setRightButtonText);
   };
 
   const { form, onChange } = useForm({

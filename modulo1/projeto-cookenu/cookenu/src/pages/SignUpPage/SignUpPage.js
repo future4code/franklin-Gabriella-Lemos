@@ -3,13 +3,13 @@ import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 import SignUpForm from "./SignUpForm";
 import { ScreenContainer } from "./styled";
 
-const SignUpPage = () => {
+const SignUpPage = ({ setRightButtonText }) => {
   useUnprotectedPage();
 
   return (
     <>
       <ScreenContainer>
-        <SignUpForm />
+        <SignUpForm setRightButtonText={setRightButtonText} />
       </ScreenContainer>
     </>
   );

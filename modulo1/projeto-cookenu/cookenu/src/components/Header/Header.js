@@ -5,8 +5,25 @@ import Button from "@mui/material/Button";
 import { goToLoginPage, goToRecipeListPage } from "../../routers/coordinator";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ rightButtonText, setRightButtonText }) => {
+  const token = localStorage.getItem("token");
+
   const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+
+  const rightButtonAction = () => {
+    if (token) {
+      logout();
+      setRightButtonText("Login");
+      goToLoginPage(navigate);
+    } else {
+      goToLoginPage(navigate);
+    }
+  };
+
   return (
     <AppBar position="static">
       <StyledToolbar>
@@ -18,13 +35,8 @@ const Header = () => {
         >
           Cookenu
         </Button>
-        <Button
-          onClick={() => {
-            goToLoginPage(navigate);
-          }}
-          color="inherit"
-        >
-          Login
+        <Button onClick={rightButtonAction} color="inherit">
+          {rightButtonText}
         </Button>
       </StyledToolbar>
     </AppBar>
