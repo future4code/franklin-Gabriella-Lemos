@@ -1,9 +1,13 @@
 import React from "react";
+import SignUpForm from "./SignUpForm";
+import { ScreenContainer } from "./styled";
 
 const SignUpPage = () => {
   return (
     <>
-      <h2>Página de Cadastro</h2>
+      <ScreenContainer>
+        <SignUpForm />
+      </ScreenContainer>
     </>
   );
 };

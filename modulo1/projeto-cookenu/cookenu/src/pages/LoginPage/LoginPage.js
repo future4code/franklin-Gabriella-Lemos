@@ -1,26 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { LogoImage, ScreenContainer, SignUpButtonContainer } from "./styled";
+import logo from "../../assets/logo.png";
+import { Button } from "@mui/material";
+import LoginForm from "./LoginForm";
+import { goToSignUpPage } from "../../routers/coordinator";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleInputEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleInputSenha = (event) => {
-    setPassword(event.target.value);
-  };
   return (
     <>
-      <h2> Login </h2>
-      <input onChange={handleInputEmail} value={email}></input>
-      <input onChange={handleInputSenha} value={password}></input>
+      <ScreenContainer>
+        <LogoImage src={logo} />
+        <LoginForm />
 
-      {/* <button onClick={() => goToLists(navigate)}>lista de receitas</button>
+        <SignUpButtonContainer>
+          <Button
+            type={"onSubmit"}
+            fullWidth
+            variant="text"
+            color="primary"
+            margin="normal"
+            onClick={() => {
+              goToSignUpPage(navigate);
+            }}
+          >
+            {" "}
+            Não possui conta? Cadastre-se
+          </Button>
+        </SignUpButtonContainer>
+
+        {/* <input onChange={handleInputEmail} value={email}></input>
+      <input onChange={handleInputSenha} value={password}></input> */}
+
+        {/* <button onClick={() => goToLists(navigate)}>lista de receitas</button>
       <button onClick={() => goToCadastro(navigate)}>cadastre-se</button> */}
+      </ScreenContainer>
     </>
   );
 };
