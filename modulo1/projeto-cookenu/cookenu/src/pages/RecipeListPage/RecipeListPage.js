@@ -6,24 +6,29 @@ import { BASE_URL } from "../../constants/urls";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { AddRecipeButton, RecipeListContainer } from "./styled";
 import AddIcon from "@mui/icons-material/Add";
-import { goToAddRecipesPage } from "../../routers/coordinator";
+import {
+  goToAddRecipesPage,
+  goToRecipeDetailPage,
+} from "../../routers/coordinator";
 
 const RecipeListPage = () => {
   const navigate = useNavigate();
 
   useProtectedPage();
 
-  const onClickCard = () => {};
+  const onClickCard = (id) => {
+    goToRecipeDetailPage(navigate, id);
+  };
 
   const recipes = useRequestData([], `${BASE_URL}/recipe/feed`);
 
   const recipeCards = recipes.map((recipe) => {
     return (
       <RecipeCard
-        key={recipe.recipeid}
+        key={recipe.recipe_id}
         title={recipe.title}
         image={recipe.image}
-        onClick={() => null}
+        onClick={() => onClickCard(recipe.recipe_id)}
       />
     );
   });
