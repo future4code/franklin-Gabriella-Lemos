@@ -1,8 +1,10 @@
 import React from "react";
 // import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const RecipeListPage = () => {
+  useProtectedPage();
   // const navigate = useNavigate();
   return (
     <>

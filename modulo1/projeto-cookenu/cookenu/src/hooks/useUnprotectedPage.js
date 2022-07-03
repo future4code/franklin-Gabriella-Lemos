@@ -1,16 +1,16 @@
 import { useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { goToLoginPage } from "../routers/coordinator";
+import { goToRecipeListPage } from "../routers/coordinator";
 
-const useProtectedPage = () => {
+const useUnprotectedPage = () => {
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
     const token = localStorage.getItem("token");
-    if (token === null) {
+    if (token) {
       console.log("Não está logado!");
-      goToLoginPage(navigate);
+      goToRecipeListPage(navigate);
     }
   }, [navigate]);
 };
-export default useProtectedPage;
+export default useUnprotectedPage;

@@ -15,3 +15,17 @@ export const login = (body, navigate) => {
       console.log(error);
     });
 };
+
+export const signUp = (body, navigate) => {
+  axios
+    .post(`${BASE_URL}/user/signup`, body)
+    .then((response) => {
+      localStorage.setItem("token", response.data.token);
+      goToRecipeListPage(navigate);
+      console.log(response.data);
+    })
+    .catch((error) => {
+      alert("Erro no cadastro!");
+      console.log(error);
+    });
+};

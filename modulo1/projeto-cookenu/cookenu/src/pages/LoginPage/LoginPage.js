@@ -5,9 +5,11 @@ import logo from "../../assets/logo.png";
 import { Button } from "@mui/material";
 import LoginForm from "./LoginForm";
 import { goToSignUpPage } from "../../routers/coordinator";
+import useUnprotectedPage from "../../hooks/useUnprotectedPage";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  useUnprotectedPage();
 
   return (
     <>
@@ -30,12 +32,6 @@ const LoginPage = () => {
             Não possui conta? Cadastre-se
           </Button>
         </SignUpButtonContainer>
-
-        {/* <input onChange={handleInputEmail} value={email}></input>
-      <input onChange={handleInputSenha} value={password}></input> */}
-
-        {/* <button onClick={() => goToLists(navigate)}>lista de receitas</button>
-      <button onClick={() => goToCadastro(navigate)}>cadastre-se</button> */}
       </ScreenContainer>
     </>
   );
