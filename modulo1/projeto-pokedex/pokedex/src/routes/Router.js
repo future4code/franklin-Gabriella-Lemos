@@ -1,19 +1,21 @@
-import { Home } from "../pages/Home/Home";
-import { DetalhesPokemon } from "../pages/DetalhesPokemon/DetalhesPokemon";
-import { Pokedex } from "../pages/Pokedex/Pokedex";
+import { HomePage } from "../pages/HomePage/HomePage";
+import { DetalhesPokemonPage } from "../pages/DetalhesPokemonPage/DetalhesPokemonPage";
+import { PokedexPage } from "../pages/PokedexPage/PokedexPage.js";
 import { ErrorPage } from "../pages/ErrorPage/ErrorPage";
 import React from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export const Router = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Router index element={<Home />} />
-        <Router path="detalhes" element={<DetalhesPokemon />} />
-        <Router path="pokedex" element={<Pokedex />} />
-        <Router path="*" element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="detalhes" element={<DetalhesPokemonPage />} />
+          <Route path="pokedex" element={<PokedexPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };

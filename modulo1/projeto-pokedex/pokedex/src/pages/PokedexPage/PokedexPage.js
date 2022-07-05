@@ -1,5 +1,5 @@
 import React from "react";
 
-export const DetalhesPokemon = () => {
+export const PokedexPage = () => {
   return <div>Pokedex</div>;
 };
