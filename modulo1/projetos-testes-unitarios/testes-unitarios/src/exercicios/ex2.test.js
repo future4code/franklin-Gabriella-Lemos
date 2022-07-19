@@ -16,15 +16,8 @@ describe("Checa Palíndromo", () => {
     expect(ehPalindromo).toEqual(true);
   });
 
-  it("retorna true para 'Sopa'", () => {
-    const ehPalindromo = checaPalindromo("sopa");
-    expect(ehPalindromo).toEqual(true);
-  });
-
-  // it("retorna true para 'Socorram-me subi no onibus em marrocos'", () => {
-  //   const string = "Socorram-me subi no onibus em marrocos";
-  //   const vrfString = string.replace();
-  //   const ehPalindromo = checaPalindromo(vrfString.replace("-", ""));
+  // it("retorna true para 'Ana'", () => {
+  //   const ehPalindromo = checaPalindromo("Ana");
   //   expect(ehPalindromo).toEqual(true);
   // });
 });
