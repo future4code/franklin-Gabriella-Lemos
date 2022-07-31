@@ -10,6 +10,7 @@ import {
   goToAddRecipesPage,
   goToRecipeDetailPage,
 } from "../../routers/coordinator";
+import Loading from "../../components/Loading/Loading";
 
 const RecipeListPage = () => {
   const navigate = useNavigate();
@@ -38,7 +39,9 @@ const RecipeListPage = () => {
   // const navigate = useNavigate();
   return (
     <>
-      <RecipeListContainer>{recipeCards}</RecipeListContainer>
+      <RecipeListContainer>
+        {recipeCards.length > 0 ? recipeCards : <Loading />}
+      </RecipeListContainer>
       <AddRecipeButton
         color="primary"
         onClick={() => goToAddRecipesPage(navigate)}

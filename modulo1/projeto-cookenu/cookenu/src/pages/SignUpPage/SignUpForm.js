@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { InputsContainer } from "./styled";
 
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, TextField } from "@mui/material";
 import useForm from "../../hooks/useForm";
 import { signUp } from "../../services/user";
 import { useNavigate } from "react-router-dom";
 
 const SignUpForm = ({ setRightButtonText }) => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = (event) => {
     console.log(form);
     event.preventDefault();
-    signUp(form, navigate, setRightButtonText);
+    signUp(form, clear, navigate, setRightButtonText, setIsLoading);
   };
 
-  const { form, onChange } = useForm({
+  const { form, clear, onChange } = useForm({
     name: "",
     email: "",
     password: "",
@@ -65,7 +66,11 @@ const SignUpForm = ({ setRightButtonText }) => {
             color="primary"
             margin="normal"
           >
-            Fazer cadastro
+            {isLoading ? (
+              <CircularProgress color={"inherit"} size={24} />
+            ) : (
+              <>Fazer cadastro</>
+            )}
           </Button>
         </form>
       </InputsContainer>

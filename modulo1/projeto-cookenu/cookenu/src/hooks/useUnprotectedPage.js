@@ -1,11 +1,11 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { goToRecipeListPage } from "../routers/coordinator";
 
 const useUnprotectedPage = () => {
   const navigate = useNavigate();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       console.log("Não está logado!");

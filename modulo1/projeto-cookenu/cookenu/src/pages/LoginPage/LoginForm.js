@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { InputsContainer } from "./styled";
 
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, TextField } from "@mui/material";
 import useForm from "../../hooks/useForm";
-// import axios from "axios";
-// import { BASE_URL } from "../../constants/urls";
+
 import { login } from "../../services/user";
 import { useNavigate } from "react-router";
 
 const LoginForm = ({ rightButtonText, setRightButtonText }) => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitForm = (event) => {
     console.log(form);
     event.preventDefault();
-    login(form, navigate, setRightButtonText);
+    login(form, navigate, clear, setRightButtonText, setIsLoading);
   };
 
-  const { form, onChange } = useForm({
+  const { form, onChange, clear } = useForm({
     email: "",
     password: "",
   });
@@ -55,7 +55,11 @@ const LoginForm = ({ rightButtonText, setRightButtonText }) => {
             color="primary"
             margin="normal"
           >
-            Fazer login
+            {isLoading ? (
+              <CircularProgress color={"inherit"} size={24} />
+            ) : (
+              <>Fazer login</>
+            )}
           </Button>
         </form>
       </InputsContainer>

@@ -7,7 +7,11 @@ const useForm = (inicialState) => {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
   };
-  return { form, onChange };
+
+  const clear = () => {
+    setForm(inicialState);
+  };
+  return { form, onChange, clear };
 };
 
 export default useForm;
