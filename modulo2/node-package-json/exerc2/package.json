@@ -1,16 +1,15 @@
 {
-  "name": "package-json",
+  "name": "exerc2",
   "version": "1.0.0",
-  "description": "este é um projeto de introducao ao node",
+  "description": "segundo exercicio de fixacao node",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./index.js"
+    "start": "node index.js"
   },
   "keywords": [
-    "aula",
     "franklin"
   ],
-  "author": "Gabriela Lemos",
+  "author": "Gabriella",
   "license": "ISC"
 }
