@@ -34,4 +34,11 @@
 
 ## Exercício 03
 
+* O ON é utilizado quando se tem nomes de colunas diferentes ou iguais entre as tabelas
+
+![Alt ou título da imagem](inner.png)
+
+
+![Alt ou título da imagem](select.png)
+
 
