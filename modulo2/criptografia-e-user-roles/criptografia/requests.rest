@@ -6,8 +6,9 @@ Content-Type: application/json
 {
    "name": "Norman Osbourne", 
    "nickname": "Green Goblin", 
-   "email": "3@oscorp.com" ,
-   "password": "ihatepeter"
+   "email": "gabiadminole3@oscorp.com" ,
+   "password": "ihatepeter",
+   "role": "ADMIN"
 }
 ###
 POST http://localhost:3003/user/login

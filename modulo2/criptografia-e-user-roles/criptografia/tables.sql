@@ -26,3 +26,5 @@ CREATE TABLE IF NOT EXISTS to_do_list_assignees (
 
 UPDATE to_do_list_users SET name = "teste"
 WHERE id = "id"
+
+ALTER TABLE to_do_list_users ADD role ENUM("NORMAL", "ADMIN") NOT NULL DEFAULT "NORMAL"
