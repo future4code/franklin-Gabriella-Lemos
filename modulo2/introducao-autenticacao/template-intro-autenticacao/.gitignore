@@ -1,0 +1,12 @@
+node_modules
+build
+
+.env
+
+.vscode
+requests.rest
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
