@@ -1,0 +1,15 @@
+{
+  "name": "exerc3",
+  "version": "1.0.0",
+  "description": "desenvolvimento do terceiro exercicio de fixacao do node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "franklin"
+  ],
+  "author": "Gabi",
+  "license": "ISC"
+}
