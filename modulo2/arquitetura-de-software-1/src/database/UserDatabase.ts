@@ -25,9 +25,9 @@ export default class UserDatabase extends BaseDatabase {
   public getByEmail = async (email: string) => {
     // const userDB = this.toUserDBModel(user);
 
-    const [result] = await BaseDatabase.connection(
-      UserDatabase.TABLE_USERS
-    ).where(email);
+    const [result] = await BaseDatabase.connection(UserDatabase.TABLE_USERS)
+      .select()
+      .where({ email });
 
     return result;
   };
@@ -35,6 +35,8 @@ export default class UserDatabase extends BaseDatabase {
   public allUser = async () => {
     // const userDB = this.toUserDBModel(user);
 
-    const result = await BaseDatabase.connection(UserDatabase.TABLE_USERS);
+    const result = await BaseDatabase.connection(
+      UserDatabase.TABLE_USERS
+    ).select();
   };
 }

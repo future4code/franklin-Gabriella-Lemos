@@ -52,21 +52,24 @@ export default class UserBusiness {
     const email = inputLogin.email;
     const password = inputLogin.password;
 
+    console.log(email, typeof email);
+
     if (!email || typeof email !== "string") {
-      throw new Error("Parâmetro 'name' inválido");
+      throw new Error("Parâmetro 'email' inválido");
     }
 
     if (!password || typeof password !== "string") {
-      throw new Error("Parâmetro 'email' inválido");
+      throw new Error("Parâmetro 'password' inválido");
     }
 
     const userDatabase = new UserDatabase();
     const userDB = await userDatabase.getByEmail(email);
     const user = new User(
-      userDB.getId(),
-      userDB.getName(),
-      userDB.getName(),
-      userDB.getPassword()
+      userDB.id,
+      userDB.name,
+      userDB.email,
+      userDB.password,
+      userDB.role
     );
 
     const hashManager = new HashManager();
@@ -74,6 +77,9 @@ export default class UserBusiness {
       password,
       user.getPassword()
     );
+    if (!hashPassword) {
+      throw new Error("Senha inválida!");
+    }
 
     const payload: ITokenPayload = {
       id: user.getId(),
