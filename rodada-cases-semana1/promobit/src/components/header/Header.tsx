@@ -11,8 +11,6 @@ const Header = () => {
       <Toolbar>
         <Container>
           <Title>TMDB</Title>
-
-          <Filter />
         </Container>
       </Toolbar>
     </AppBar>

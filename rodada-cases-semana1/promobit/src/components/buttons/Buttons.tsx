@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 
 type Props = {
   texto: string;
+  onClick: void;
 };
 
 const Buttons = ({ texto }: Props) => {
