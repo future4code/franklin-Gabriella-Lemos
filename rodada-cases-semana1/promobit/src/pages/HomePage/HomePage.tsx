@@ -7,7 +7,6 @@ import { movies } from "../../types/TopMovies";
 import CardMovie from "../../components/cardMovie/CardMovie";
 import { goToDetailsPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 import Buttons from "../../components/buttons/Buttons";
 
 const HomePage = () => {
@@ -72,10 +71,16 @@ const HomePage = () => {
                   release_date={movie.release_date}
                   poster_path={movie.poster_path}
                   id={""}
-                  onClick={undefined}
+                  onClickLearn={() => onClickCard(movie.id)}
+                  learn="Leia Mais"
+                  onClickShare={""}
+                  share="Compartilhar"
                 />{" "}
               </React.Fragment>
-              <Button onClick={() => onClickCard(movie.id)}>Learn More</Button>
+              {/* <Button onClick={() => onClickCard(movie.id)}>Leia mais</Button>
+              <Button onClick={() => onClickCard(movie.id)}>
+                Compartilhar
+              </Button> */}
             </>
           );
         })}

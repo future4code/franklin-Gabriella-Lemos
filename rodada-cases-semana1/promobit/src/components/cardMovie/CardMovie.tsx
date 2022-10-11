@@ -1,6 +1,5 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
@@ -12,12 +11,16 @@ export default function CardMovie({
   title,
   poster_path,
   release_date,
+  onClickLearn,
+  onClickShare,
+  learn,
+  share,
 }: movies) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="500"
         image={`${IMAGE_URL}${poster_path}`}
         alt="green iguana"
       />
@@ -29,9 +32,8 @@ export default function CardMovie({
           {release_date}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-      </CardActions>
+      <Button onClick={onClickLearn}>{learn}</Button>
+      <Button onClick={onClickShare}>{share}</Button>
     </Card>
   );
 }

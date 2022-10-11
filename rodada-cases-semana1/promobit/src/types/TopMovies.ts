@@ -1,15 +1,12 @@
-export type moviesProps = {
-  title: string;
-  poster_path: string;
-  release_date: string;
-};
-
 export type movies = {
   id: string;
   title: string;
   poster_path: string;
   release_date: string;
-  onClick: any;
+  onClickLearn: any;
+  onClickShare: any;
+  learn: string;
+  share: string;
 };
 
 export type DetailMovie = {
