@@ -9,8 +9,7 @@
 
 Projeto Case - Brainnco publicado na plataforma surge:
 
-<!-- #### - [Link: Brainn Case](https://conscious-twist.surge.sh/)
-<br/> -->
+
 
 ### Tecnologias🛠
 
